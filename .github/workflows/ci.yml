@@ -49,6 +49,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
+      # tauri.conf 声明了 sidecar 资源，但 binaries/ 被 gitignore；
+      # CI 只做 cargo check，放一个占位文件即可，不必跑完整 PyInstaller。
+      - name: 准备 API sidecar 占位文件
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path src/tauri/binaries | Out-Null
+          # 最小 MZ 头，满足「文件存在」校验
+          [System.IO.File]::WriteAllBytes(
+            "src/tauri/binaries/token-quota-ball-api.exe",
+            [byte[]](0x4D, 0x5A)
+          )
       - name: cargo check
         working-directory: src/tauri
         run: cargo check
