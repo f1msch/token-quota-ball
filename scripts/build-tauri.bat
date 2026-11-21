@@ -1,5 +1,6 @@
-@echo off
+﻿@echo off
 setlocal
+chcp 65001 >nul
 cd /d "%~dp0\.."
 if not exist "src\tauri\tauri.conf.json" (
   echo 找不到项目根目录。请从仓库的 scripts 目录运行本脚本。
@@ -11,6 +12,11 @@ set "PATH=%USERPROFILE%\.cargo\bin;%PATH%"
 set "PYTHONPATH=%CD%\src;%PYTHONPATH%"
 
 if exist "%USERPROFILE%\.cargo\env.bat" call "%USERPROFILE%\.cargo\env.bat"
+
+echo 构建前结束可能占用 exe 的进程（主程序 / API sidecar）...
+taskkill /F /IM token-quota-ball.exe >nul 2>nul
+taskkill /F /IM token-quota-ball-api.exe >nul 2>nul
+timeout /t 1 /nobreak >nul
 
 where cargo >nul 2>nul
 if errorlevel 1 (

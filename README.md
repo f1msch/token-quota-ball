@@ -15,11 +15,21 @@ Windows 桌面额度悬浮球：在桌面置顶显示一颗玻璃水球，实时
 
 ## 下载安装
 
-1. 打开 [Releases](../../releases)，下载最新的 **NSIS 安装包**（`Token Quota Ball_x.x.x_x64-setup.exe`）。
+1. 打开 [Releases](../../releases)，下载最新的 **安装包**（推荐下面第一个）。
 2. 安装后从开始菜单启动即可。
 3. **不必**再安装 Python、Node.js 或 Rust。
 
 请只开一个球。若启动失败，可在任务管理器中结束残留的 `token-quota-ball.exe` / `token-quota-ball-api.exe` 后再试。
+
+### Release 里几个 exe 分别是什么
+
+| 文件 | 作用 | 谁该用 |
+|------|------|--------|
+| `Token Quota Ball_x.x.x_x64-setup.exe` | NSIS **安装包**，安装主程序和后端 | **普通用户下载这个** |
+| `token-quota-ball.exe` | 主程序（悬浮球窗口 / 界面） | 免安装试用时与下一个一起用；日常由安装包启动 |
+| `token-quota-ball-api.exe` | 额度查询后端（主程序会自动拉起，不要单独当入口双击指望完整功能） | 须与主程序放在同一目录 |
+
+普通用户只装安装包即可。若有人发的是两个裸 exe，请放在同一文件夹后再运行 `token-quota-ball.exe`。
 
 ## 支持的服务
 

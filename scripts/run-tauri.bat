@@ -1,5 +1,6 @@
-@echo off
+﻿@echo off
 setlocal
+chcp 65001 >nul
 cd /d "%~dp0\.."
 if not exist "src\tauri\tauri.conf.json" (
   echo 找不到项目根目录。请从仓库的 scripts 目录运行本脚本。

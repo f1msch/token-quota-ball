@@ -1,4 +1,5 @@
-@echo off
+﻿@echo off
+chcp 65001 >nul
 cd /d "%~dp0\.."
 if not exist "src\token_quota_ball\__main__.py" (
   echo 找不到项目根目录。请从仓库的 scripts 目录运行本脚本。

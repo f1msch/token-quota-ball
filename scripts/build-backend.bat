@@ -1,5 +1,6 @@
-@echo off
+﻿@echo off
 setlocal
+chcp 65001 >nul
 cd /d "%~dp0\.."
 if not exist "src\token_quota_ball\api\server.py" (
   echo 找不到项目根目录。请从仓库的 scripts 目录运行本脚本。
@@ -15,6 +16,10 @@ if errorlevel 1 (
   echo PATH 中未找到 Python。请安装 Python 3.10+ 后重试。
   exit /b 1
 )
+
+REM sidecar 输出被占用时 PyInstaller 也会失败
+taskkill /F /IM token-quota-ball-api.exe >nul 2>nul
+timeout /t 1 /nobreak >nul
 
 echo 正在安装构建依赖...
 python -m pip install -q -r requirements.txt -r requirements-build.txt
