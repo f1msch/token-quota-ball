@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  python:
+    name: Python 测试
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 安装依赖
+        run: |
+          python -m pip install -U pip
+          pip install -r requirements-dev.txt
+          pip install -e .
+      - name: 运行 Pytest
+        env:
+          PYTHONPATH: src
+        run: pytest -q
+
+  ui:
+    name: 前端构建
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            src/ui/package-lock.json
+      - name: 安装根依赖
+        run: npm ci
+      - name: 安装前端依赖
+        run: npm --prefix src/ui ci
+      - name: 构建前端
+        run: npm run build:ui
+
+  rust:
+    name: Rust 检查
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: cargo check
+        working-directory: src/tauri
+        run: cargo check

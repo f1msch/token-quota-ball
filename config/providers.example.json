@@ -1,0 +1,13 @@
+{
+  "volc_agent_plan": {
+    "access_key_id": "",
+    "secret_access_key": "",
+    "session_token": "",
+    "account_type": "personal",
+    "seat_ids": []
+  },
+  "deepseek": {
+    "api_key": "",
+    "reference_balance": null
+  }
+}

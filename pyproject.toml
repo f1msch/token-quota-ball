@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "token-quota-ball"
+version = "0.1.0"
+description = "Windows 桌面额度悬浮球：实时查看 Cursor、WorkBuddy、Trae、DeepSeek 与火山方舟 Agent Plan 用量。"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+keywords = [
+  "quota",
+  "token",
+  "floating ball",
+  "Cursor",
+  "WorkBuddy",
+  "Trae",
+  "DeepSeek",
+  "Volcengine",
+  "Ark",
+  "Agent Plan",
+  "火山方舟",
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Operating System :: Microsoft :: Windows",
+  "Topic :: Utilities",
+]
+dependencies = [
+  "cryptography>=42",
+]
+
+[project.scripts]
+token-quota-ball = "token_quota_ball.__main__:main"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["token_quota_ball*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

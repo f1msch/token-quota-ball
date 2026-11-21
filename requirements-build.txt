@@ -1,0 +1,2 @@
+# 仅在打独立 API sidecar（发布安装包）时需要。
+pyinstaller>=6.3

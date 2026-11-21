@@ -1,0 +1,21 @@
+[package]
+name = "token-quota-ball"
+version = "0.1.0"
+description = "Desktop floating ball for live token/quota usage"
+authors = ["Token Quota Ball contributors"]
+edition = "2021"
+rust-version = "1.77.2"
+license = "MIT"
+
+[lib]
+name = "token_quota_ball_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tauri = { version = "2", features = [] }
+tauri-plugin-single-instance = "2"

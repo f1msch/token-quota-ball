@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local secrets and runtime state — never commit these
+config/providers.json
+logs/
+run/
+*.log
+ui_state.json
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Backup leftovers
+*.bak
+*.bak_*
+*.before_*.bak
+
+# Local artifacts, screenshots and scratch output
+2026-*/
+.screenshots/
+.trae/
+.trae-html-share-packages/
+debug.log
+docs/preview.html
+docs/preview-hero.html
+
+# Node / Tauri build artifacts
+node_modules/
+src/ui/node_modules/
+src/ui/dist/
+*.tsbuildinfo
+src/tauri/target/
+src/tauri/gen/
+src/tauri/binaries/
+build/pyinstaller/
+packaging/dist/
+packaging/build/
+
+# Binaries / installers — never commit build outputs
+*.exe
+*.dll
+*.pdb
+*.msi
+
+# Local crates.io mirror override (see .cargo/config.toml.example)
+.cargo/config.toml
+
+# Editor / agent local state
+.cursor/

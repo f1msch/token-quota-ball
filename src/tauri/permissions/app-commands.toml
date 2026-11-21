@@ -1,0 +1,22 @@
+[[permission]]
+identifier = "allow-app-commands"
+description = "Allow the orb UI to call app IPC commands"
+commands.allow = [
+  "backend_info",
+  "set_orb_position",
+  "get_orb_position",
+  "virtual_screen",
+  "show_hover",
+  "hide_hover",
+  "start_drag",
+  "show_details",
+  "hide_details",
+  "show_settings",
+  "hide_settings",
+  "show_menu",
+  "set_menu_region",
+  "hide_menu",
+  "pointer_over_shell",
+  "toggle_orb_dock",
+  "quit_app"
+]
